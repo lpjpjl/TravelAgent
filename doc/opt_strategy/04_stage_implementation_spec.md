@@ -242,10 +242,10 @@
 | P0-1 AmapService 结构化解析 | 1、3、4 | A | Stage 1、3、4 已细化 | `evidence/stage_1/`、`evidence/stage_3/`、`evidence/stage_4/` |
 | P0-2 标准化数据调用链 | 5 | B | Stage 5 已细化 | `evidence/stage_5/` |
 | P0-3 多偏好完整检索 | 5、6 | B | Stage 5、6 已细化 | `evidence/stage_5/`、`evidence/stage_6/` |
-| P0-4 结构化草案输出 | 2、5、7B、8、9B | B | Stage 2、5 已细化；Stage 7B、8、9B 待补齐 | 对应 Stage 目录 |
-| P0-5 餐饮候选检索与筛选 | 7A、7B、9A、9B | B | 待补齐 | 对应 Stage 目录 |
+| P0-4 结构化草案输出 | 2、5、7B、8、9B | B | Stage 2、5、7B、8 已细化；Stage 9B 待补齐 | `evidence/stage_2/`、`evidence/stage_5/`、`evidence/stage_7b/`、`evidence/stage_8/` 及对应 Stage 目录 |
+| P0-5 餐饮候选检索与筛选 | 7A、7B、9A、9B | B | Stage 7A、7B 已细化；Stage 9A、9B 待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/` 及对应 Stage 目录 |
 | P0-6 RouteService 基础版 | 10A、10B | B | 待补齐 | 对应 Stage 目录 |
-| P0-7 行程深度关联化 | 7A～13D | B | 待补齐 | 对应 Stage 目录 |
+| P0-7 行程深度关联化 | 7A～13D | B | Stage 7A、7B、8 已细化；其余待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_8/` 及对应 Stage 目录 |
 | P0-8 可执行时间轴信息 | 11、14 | B | 待补齐 | `evidence/stage_11/`、`evidence/stage_14/` |
 | P0-9 对话式行程迭代 | 31A～32 | E | 待补齐 | 对应 Stage 目录 |
 | P1-1 分级 Fallback 与结果状态 | 16 | C | 待补齐 | `evidence/stage_16/` |
@@ -485,8 +485,11 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 | 3 | [AmapService POI 与地理编码结构化解析](stages/stage_03.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1、2 Done 后补 R1 |
 | 4 | [AmapService 天气与路线结构化解析](stages/stage_04.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1～3 Done 后补 R1 |
 | 5 | [额外要求解析与标准化数据调用链 shadow 接入](stages/stage_05.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1～4 Done 后补 R1 |
-| 6 | [多偏好完整检索](stages/stage_06.md) | 已细化，待下一批跨 Stage 审计 | 待 Stage 5 Done 后补 R1 |
-| 7A～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
+| 6 | [多偏好完整检索](stages/stage_06.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5 Done 后补 R1 |
+| 7A | [主要点位候选池](stages/stage_07a.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5、6 Done 后补 R1 |
+| 7B | [DestinationResearchAgent 主要点位筛选](stages/stage_07b.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5、7A Done 后补 R1 |
+| 8 | [PrimaryItineraryDraft](stages/stage_08.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 2、5、7B Done 后补 R1 |
+| 9A～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
 
 ### 11.1 Stage 1～5 首轮跨阶段设计审计
 
@@ -519,4 +522,4 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 5. 细化 Stage 31A～33，覆盖无状态修订、对话前端和配置收口；
 6. 执行 02→03→04→代码的全盘一致性审计。
 
-当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6 已完成细化；后续从 Stage 7A 开始逐个新增分册，不再向总纲堆叠完整工作包。
+当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化；下一步先完成 Stage 6～8 第二次跨 Stage 设计审计，再从 Stage 9A 开始逐个新增分册，不再向总纲堆叠完整工作包。

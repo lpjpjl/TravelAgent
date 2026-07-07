@@ -183,4 +183,4 @@ npm --prefix frontend run build
 
 ## 13. Ready/Done 复核
 
-当前设计状态：**工作包已细化，待下一批跨 Stage 设计审计；执行 Ready 待 R1**。R1 必须等待 Stage 5 实际 Done；审计时重点复核 Stage 5 ResearchBootstrapResult、Stage 7A CandidatePool 和 required POI的归属边界。当前不表示 Ready、Done、设计冻结或允许修改工程代码。
+当前设计状态：**工作包已细化，待 Stage 6～8 第二次跨 Stage 设计审计；执行 Ready 待 R1**。R1 必须等待 Stage 5 实际 Done；审计时重点复核 Stage 5 ResearchBootstrapResult、Stage 7A CandidatePool 和 required POI的归属边界。当前不表示 Ready、Done、设计冻结或允许修改工程代码。

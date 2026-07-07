@@ -4,7 +4,7 @@
 >
 > 维护规则：每次开始、暂停、完成或调整执行顺序时更新；设计与业务内容仍回写 02～04，本文只保留状态摘要和链接。
 >
-> 最后更新：2026-07-06
+> 最后更新：2026-07-07
 
 ---
 
@@ -13,13 +13,13 @@
 | 项目 | 当前值 |
 |------|--------|
 | 所处阶段 | 代码实施规格设计 |
-| 当前节点 | 04 Stage 1～5 已细化并完成首轮跨 Stage 审计；Stage 6 已细化 |
+| 当前节点 | Stage 1～5 已完成首轮跨 Stage 审计；Stage 6、7A、7B、8 已细化，待第二次跨 Stage 审计 |
 | 当前状态 | 暂停 |
-| 下一目标 | 细化 Stage 7A：主要点位候选池工作包 |
+| 下一目标 | 执行 Stage 6～8 第二次跨 Stage 设计审计 |
 | 当前代码实施 | 尚未开始本轮优化代码改造 |
 | 当前阻塞 | 无 |
 
-恢复工作时，从 `stages/stage_07a.md` 的主要点位候选池工作包开始；先核对 Stage 6 输出与 Stage 7A 输入边界，不重复审计已经通过的 Stage 1～5。
+恢复工作时，直接审计 `stages/stage_06.md`、`stage_07a.md`、`stage_07b.md`、`stage_08.md`，不重复审计已经通过的 Stage 1～5。重点核对 `PreferenceSearchResult → PrimaryCandidatePool → PrimaryCandidateSelection → PrimaryItineraryDraft` 的 ID、required、constraint IDs、food/餐次规则、错误分流，以及 Stage 8 向 Stage 9A 输出的 meal slots/anchors；完成 R2～R10 复核并回写审计结论后，再开始细化 Stage 9A。
 
 ### 1.1 工程修改硬约束
 
@@ -39,7 +39,7 @@
 |------|------|----------|----------|
 | [`02_opt_plan.md`](02_opt_plan.md) | 优化目标、产品规则与业务约束 | 已冻结 | 原则上不修改；仅在产品目标或业务规则变化时重新评审 |
 | [`03_implement_plan.md`](03_implement_plan.md) | Stage 编排、依赖、范围与 Gate | 已完成，已接入 04 | 仅在 Stage 依赖、范围或 Gate 确有问题时修改 |
-| [`04_stage_implementation_spec.md`](04_stage_implementation_spec.md) + [`stages/`](stages/) | 文件、契约、步骤、测试、指标与回滚 | 总纲完成；Stage 1～5 已细化并审计，Stage 6 已细化 | 下一步细化 Stage 7A |
+| [`04_stage_implementation_spec.md`](04_stage_implementation_spec.md) + [`stages/`](stages/) | 文件、契约、步骤、测试、指标与回滚 | 总纲完成；Stage 1～5 已完成首轮审计；Stage 6、7A、7B、8 已细化 | 下一步执行 Stage 6～8 第二次跨 Stage 审计 |
 | `99_todo.md` | 执行状态与 Todo 看板 | 使用中 | 仅按用户明确指令更新 |
 
 ---
@@ -58,6 +58,9 @@
 - [x] 将 04 重构为总纲 + Stage 分册，避免单文件持续膨胀。
 - [x] 细化 Stage 1～5 工作包并完成首轮跨 Stage 一致性审计，R2～R10 设计复核通过。
 - [x] 细化 Stage 6：多偏好完整检索工作包。
+- [x] 细化 Stage 7A：主要点位候选池工作包。
+- [x] 细化 Stage 7B：DestinationResearchAgent 主要点位筛选工作包。
+- [x] 细化 Stage 8：PrimaryItineraryDraft 工作包。
 - [x] 明确设计冻结与执行 Ready 的区别：设计期复核 R2～R10，R1 实施时逐 Stage 解锁。
 
 ---
@@ -74,9 +77,12 @@
 - [x] 完成 Stage 1～5 文件、契约、错误、测试和回滚的一致性审计。
 - [x] 完成 Stage 1～5 的 R2～R10 设计复核；R1 留待实施时按依赖补证。
 - [x] 细化 Stage 6：多偏好完整检索。
-- [ ] 细化 Stage 7A：主要点位候选池。
-- [ ] 细化 Stage 7B～16，完成候选筛选、两次草案、路线、时间、预算、修复闭环及默认链路切换规格。
-- [ ] 在合适批次节点对 Stage 6～16 做跨 Stage 一致性审计和 R2～R10 设计复核。
+- [x] 细化 Stage 7A：主要点位候选池。
+- [x] 细化 Stage 7B：DestinationResearchAgent 主要点位筛选。
+- [x] 细化 Stage 8：PrimaryItineraryDraft。
+- [ ] 执行 Stage 6～8 第二次跨 Stage 一致性审计和 R2～R10 设计复核；审计通过前不开始 Stage 9A。
+- [ ] 细化 Stage 9A～16，完成连续住宿、便餐、完整草案、路线、时间、预算、修复闭环及默认链路切换规格。
+- [ ] 在后续合适批次节点继续对 Stage 9A～16 做跨 Stage 一致性审计和 R2～R10 设计复核。
 
 ### 4.2 后续批次
 
