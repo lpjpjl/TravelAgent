@@ -242,10 +242,10 @@
 | P0-1 AmapService 结构化解析 | 1、3、4 | A | Stage 1、3、4 已细化 | `evidence/stage_1/`、`evidence/stage_3/`、`evidence/stage_4/` |
 | P0-2 标准化数据调用链 | 5 | B | Stage 5 已细化 | `evidence/stage_5/` |
 | P0-3 多偏好完整检索 | 5、6 | B | Stage 5、6 已细化 | `evidence/stage_5/`、`evidence/stage_6/` |
-| P0-4 结构化草案输出 | 2、5、7B、8、9B | B | Stage 2、5、7B、8 已细化；Stage 9B 待补齐 | `evidence/stage_2/`、`evidence/stage_5/`、`evidence/stage_7b/`、`evidence/stage_8/` 及对应 Stage 目录 |
-| P0-5 餐饮候选检索与筛选 | 7A、7B、9A、9B | B | Stage 7A、7B 已细化；Stage 9A、9B 待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/` 及对应 Stage 目录 |
+| P0-4 结构化草案输出 | 2、5、7B、8、9B | B | Stage 2、5、7B、8、9B 已细化 | `evidence/stage_2/`、`evidence/stage_5/`、`evidence/stage_7b/`、`evidence/stage_8/`、`evidence/stage_9b/` |
+| P0-5 餐饮候选检索与筛选 | 7A、7B、9A、9B | B | Stage 7A、7B、9A、9B 已细化 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_9a/`、`evidence/stage_9b/` |
 | P0-6 RouteService 基础版 | 10A、10B | B | 待补齐 | 对应 Stage 目录 |
-| P0-7 行程深度关联化 | 7A～13D | B | Stage 7A、7B、8 已细化；其余待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_8/` 及对应 Stage 目录 |
+| P0-7 行程深度关联化 | 7A～13D | B | Stage 7A、7B、8、9A、9B 已细化；其余待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_8/`、`evidence/stage_9a/`、`evidence/stage_9b/` 及对应 Stage 目录 |
 | P0-8 可执行时间轴信息 | 11、14 | B | 待补齐 | `evidence/stage_11/`、`evidence/stage_14/` |
 | P0-9 对话式行程迭代 | 31A～32 | E | 待补齐 | 对应 Stage 目录 |
 | P1-1 分级 Fallback 与结果状态 | 16 | C | 待补齐 | `evidence/stage_16/` |
@@ -485,11 +485,13 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 | 3 | [AmapService POI 与地理编码结构化解析](stages/stage_03.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1、2 Done 后补 R1 |
 | 4 | [AmapService 天气与路线结构化解析](stages/stage_04.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1～3 Done 后补 R1 |
 | 5 | [额外要求解析与标准化数据调用链 shadow 接入](stages/stage_05.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 1～4 Done 后补 R1 |
-| 6 | [多偏好完整检索](stages/stage_06.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5 Done 后补 R1 |
-| 7A | [主要点位候选池](stages/stage_07a.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5、6 Done 后补 R1 |
-| 7B | [DestinationResearchAgent 主要点位筛选](stages/stage_07b.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 5、7A Done 后补 R1 |
-| 8 | [PrimaryItineraryDraft](stages/stage_08.md) | 已细化，待 Stage 6～8 第二次跨 Stage 审计 | 待 Stage 2、5、7B Done 后补 R1 |
-| 9A～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
+| 6 | [多偏好完整检索](stages/stage_06.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5 Done 后补 R1 |
+| 7A | [主要点位候选池](stages/stage_07a.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5、6 Done 后补 R1 |
+| 7B | [DestinationResearchAgent 主要点位筛选](stages/stage_07b.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5、7A Done 后补 R1 |
+| 8 | [PrimaryItineraryDraft](stages/stage_08.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 2、5、7B Done 后补 R1 |
+| 9A | [连续住宿与便餐候选/筛选](stages/stage_09a.md) | 已细化，待 Stage 9A～16 跨 Stage 审计 | 待 Stage 8 Done 后补 R1 |
+| 9B | [完整 ItineraryDraft](stages/stage_09b.md) | 已细化，待 Stage 9A～16 跨 Stage 审计 | 待 Stage 9A Done 后补 R1 |
+| 10A～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
 
 ### 11.1 Stage 1～5 首轮跨阶段设计审计
 
@@ -509,6 +511,22 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 
 审计结论：Stage 1～5 的 R2～R10 设计材料通过首轮一致性复核。Stage 1 因无前置 Stage，R1 在语义上满足，但在设计冻结且用户明确授权前仍不得编码；Stage 2～5 的 R1 必须等待各自前置 Stage 实际 Done 后逐项补证。
 
+### 11.2 Stage 6～8 第二次跨阶段设计审计
+
+审计日期：2026-07-09。审计范围为 04 总纲、Stage 6、7A、7B、8 分册，并对照 02/03 中 P0-3、P0-4、P0-5、P0-7、P1-2 的业务边界；不代表代码、测试、Gate 或设计冻结已完成。
+
+| 审计维度 | 结论 | 关键收口 |
+|----------|------|----------|
+| 依赖与实施顺序 | 通过 | Stage 6→7A→7B→8 的输入输出链闭合；Stage 9A 在本批审计通过前保持阻断，R1 仍待前置 Stage 实际 Done 后逐项补证 |
+| ID、required 与约束传递 | 通过 | `PreferenceSearchResult` 独立保留 required POI；`PrimaryCandidatePool` 合并 required 与 accepted `constraint_ids`；`PrimaryCandidateSelection` 强制 required 全保留；`PrimaryItineraryDraft` 要求 selection ID 恰好安排一次且 kind/required/constraint IDs 不变 |
+| food、gourmet 与餐次边界 | 通过 | Stage 6 只检索并标记 food 命中；Stage 7A 才形成 gourmet 候选并执行饮食排除；Stage 7B 只筛选 ID 子集；Stage 8 才分配 `meal_role`、三餐槽位和每天最多一个 gourmet，营业时间与便餐留给 Stage 9A/11/12B |
+| 错误与业务不可行分流 | 通过 | 合法空检索、空候选池、gourmet 不可用、required 饮食冲突、selected_count 小于天数和核心 LLM 重试耗尽均有独立状态；核心筛选和 PrimaryDraft 耗尽不得复用 Stage 5 `parse_failed` ignored 例外 |
+| Stage 9A 锚点边界 | 通过 | Stage 8 只输出 `DAY_START/LUNCH_SLOT/DAY_END` 或同日已有 POI ID；无下午点且午餐待选时强制 `dinner_after_anchor=LUNCH_SLOT`，不得引用未来酒店或便餐 ID |
+| ignored、天气与越界字段 | 通过 | ignored 子句不进入检索、候选、筛选或草案；Stage 18 前天气对 Stage 6～8 决策零影响；6～8 均禁止输出下游的酒店、便餐、路线、时间轴、预算或最终 TripPlan 字段 |
+| R2～R10 设计完整性 | 通过 | 四个分册均已列出基线差异、文件范围、输入输出/错误契约、配置/开关、实施步骤、不做事项、自动化测试、人工验收、退出指标、迁移与回滚；Stage 7A 类型不匹配的实施步骤已收口为排除诊断 |
+
+审计结论：Stage 6、7A、7B、8 的 R2～R10 设计材料通过第二次跨 Stage 一致性复核。R1 均保持“执行 Ready 待前置 Stage 实际 Done 后补证”；当前结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步可开始细化 Stage 9A 分册。
+
 ---
 
 ## 十二、后续填充顺序
@@ -522,4 +540,4 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 5. 细化 Stage 31A～33，覆盖无状态修订、对话前端和配置收口；
 6. 执行 02→03→04→代码的全盘一致性审计。
 
-当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化；下一步先完成 Stage 6～8 第二次跨 Stage 设计审计，再从 Stage 9A 开始逐个新增分册，不再向总纲堆叠完整工作包。
+当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化并通过第二次跨 Stage 设计审计，Stage 9A、9B 已完成细化；下一步从 Stage 10A 开始逐个新增分册，不再向总纲堆叠完整工作包。

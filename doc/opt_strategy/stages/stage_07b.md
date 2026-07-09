@@ -213,4 +213,4 @@ npm --prefix frontend run build
 
 ## 13. Ready/Done 复核
 
-当前设计状态：**工作包已细化，待 Stage 6～8 第二次跨 Stage 设计审计；执行 Ready 待 R1**。R1 必须等待 Stage 5、7A 实际 Done；审计时重点复核 7A `PrimaryCandidatePool` 到本 Stage `PrimaryCandidateSelection` 的 ID/required/constraint 一致性、核心筛选耗尽不得复用 parse_failed 例外，以及 Stage 8 对日期、顺序和美食最终数量约束的唯一职责。当前不表示 Ready、Done、设计冻结或允许修改工程代码。
+当前设计状态：**工作包已细化，R2～R10 设计复核通过；执行 Ready 待 R1**。R1 必须等待 Stage 5、7A 实际 Done；第二次跨 Stage 审计已确认 7A `PrimaryCandidatePool` 到本 Stage `PrimaryCandidateSelection` 的 ID/required/constraint 一致性、核心筛选耗尽不得复用 parse_failed 例外，以及 Stage 8 对日期、顺序和美食最终数量约束的唯一职责。当前不表示 Ready、Done、设计冻结或允许修改工程代码。

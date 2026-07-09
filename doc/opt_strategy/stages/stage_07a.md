@@ -117,7 +117,7 @@
 ## 6. 实施步骤
 
 1. 在 research 模型中定义封闭 candidate kind、候选、排除记录和候选池不变量，先补序列化正反例。
-2. 实现 attraction/shopping/leisure 与 gourmet 的确定性分类，拒绝输入目标类型和真实 POI 类型不一致的实体。
+2. 实现 attraction/shopping/leisure 与 gourmet 的确定性分类，对目标类型和真实 POI 类型不一致的普通实体生成稳定排除诊断，不改写事实类型。
 3. 实现 Stage 6 hit 的稳定入池和 `(provider, source_id)` 去重，完整保留匹配偏好与事实引用。
 4. 按 accepted constraints 顺序合并 required POI，验证 required 身份、constraint IDs 和事实冲突规则。
 5. 仅在 `food` 偏好开启时建立 gourmet 候选，对其执行全部 accepted dietary rules并生成脱敏排除记录。
@@ -211,4 +211,4 @@ npm --prefix frontend run build
 
 ## 13. Ready/Done 复核
 
-当前设计状态：**工作包已细化，待 Stage 6～8 第二次跨 Stage 设计审计；执行 Ready 待 R1**。R1 必须等待 Stage 5、6 实际 Done；审计时重点复核 Stage 6 `PreferenceSearchResult` 到本 Stage `PrimaryCandidatePool` 的唯一归属、required 餐饮高于普通 food 偏好的优先级，以及 Stage 7B/8/9A 的职责边界。当前不表示 Ready、Done、设计冻结或允许修改工程代码。
+当前设计状态：**工作包已细化，R2～R10 设计复核通过；执行 Ready 待 R1**。R1 必须等待 Stage 5、6 实际 Done；第二次跨 Stage 审计已确认 Stage 6 `PreferenceSearchResult` 到本 Stage `PrimaryCandidatePool` 的唯一归属、required 餐饮高于普通 food 偏好的优先级，以及 Stage 7B/8/9A 的职责边界。当前不表示 Ready、Done、设计冻结或允许修改工程代码。
