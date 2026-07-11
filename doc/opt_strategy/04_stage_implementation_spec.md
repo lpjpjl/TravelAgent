@@ -250,17 +250,17 @@
 | P0-9 对话式行程迭代 | 31A～32 | E | 待补齐 | 对应 Stage 目录 |
 | P1-1 分级 Fallback 与结果状态 | 16 | C | Stage 16 已细化 | `evidence/stage_16/` |
 | P1-2 分级错误处理 | 15 | C | Stage 15 已细化 | `evidence/stage_15/` |
-| P1-3 请求缓存与外部数据降级 | 17 | C | 待补齐 | `evidence/stage_17/` |
-| P1-4 地图信息增强 | 20 | C | 待补齐 | `evidence/stage_20/` |
-| P1-5 天气驱动决策 | 18 | C | 待补齐 | `evidence/stage_18/` |
-| P1-6 地图 Key 风险治理 | 19 | C | 待补齐 | `evidence/stage_19/` |
+| P1-3 请求缓存与外部数据降级 | 17 | C | Stage 17 已细化 | `evidence/stage_17/` |
+| P1-4 地图信息增强 | 20 | C | Stage 20 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_20/` |
+| P1-5 天气驱动决策 | 18 | C | Stage 18 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_18/` |
+| P1-6 地图 Key 风险治理 | 19 | C | Stage 19 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_19/` |
 | P2-1 当前行程导航与 PDF 历史 | 13E、26、27 | D | Stage 13E 已细化；26、27 待补齐 | `evidence/stage_13e/`、`evidence/stage_26/`、`evidence/stage_27/` |
 | P2-2 SSE 流式进度 | 28 | D | 待补齐 | `evidence/stage_28/` |
-| P2-3 导出代码重构 | 25 | D | 待补齐 | `evidence/stage_25/` |
-| P2-4 图片批量接口 | 23 | D | 待补齐 | `evidence/stage_23/` |
-| P2-5 图片加载优化 | 24 | D | 待补齐 | `evidence/stage_24/` |
-| P2-6 前端代理统一 | 21 | D | 待补齐 | `evidence/stage_21/` |
-| P2-7 天级独立折叠 | 22 | D | 待补齐 | `evidence/stage_22/` |
+| P2-3 导出代码重构 | 25 | D | Stage 25 已细化，R2～R10 独立审计通过 | `evidence/stage_25/` |
+| P2-4 图片批量接口 | 23 | D | Stage 23 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_23/` |
+| P2-5 图片加载优化 | 24 | D | Stage 24 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_24/` |
+| P2-6 前端代理统一 | 21 | D | Stage 21 已细化，R2～R10 独立审计通过 | `evidence/stage_21/` |
+| P2-7 天级独立折叠 | 22 | D | Stage 22 已细化，R2～R10 跨 Stage 审计通过 | `evidence/stage_22/` |
 | P2-8 PC 显示稳定性 | 29 | D | 待补齐 | `evidence/stage_29/` |
 | P2-9 行前须知 | 30 | D | 待补齐 | `evidence/stage_30/` |
 | P3-1 统一配置管理 | 33 | E 后收口 | 待补齐 | `evidence/stage_33/` |
@@ -491,7 +491,16 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 | 7B | [DestinationResearchAgent 主要点位筛选](stages/stage_07b.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5、7A Done 后补 R1 |
 | 8 | [PrimaryItineraryDraft](stages/stage_08.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 2、5、7B Done 后补 R1 |
 | 9A～16 | 对应 Stage 分册 | 已细化，R2～R10 全范围一致性审计通过 | 各 Stage 仍须待实际前置 Done 后补 R1；16 另待 Gate B 实际证据 |
-| 17～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
+| 17 | [进程内请求缓存与外部数据降级](stages/stage_17.md) | 已细化，R2～R10 独立设计复核通过 | 待 Stage 1、16 Done 后补 R1 |
+| 18 | [天气驱动两次草案规划](stages/stage_18.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 4、13D、16、17 Done 后补 R1 |
+| 19 | [本地地图 Key 风险治理](stages/stage_19.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 1 Done 后补 R1 |
+| 20 | [地图真实路线与时间轴联动](stages/stage_20.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 10B、14、16、17、19 Done 后补 R1 |
+| 21 | [本地开发前端代理统一](stages/stage_21.md) | 已细化，R2～R10 独立审计通过 | 待 Stage 19 Done 后补 R1 |
+| 22 | [多天独立折叠与全部展开](stages/stage_22.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 14 Done 后补 R1 |
+| 23 | [图片批量接口](stages/stage_23.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 13A、21 Done 后补 R1 |
+| 24 | [图片加载优化](stages/stage_24.md) | 已细化，R2～R10 跨 Stage 审计通过 | 待 Stage 22、23 Done 后补 R1 |
+| 25 | [导出重构、自动全展开与 PDF 下载](stages/stage_25.md) | 已细化，R2～R10 独立审计通过 | 待 Stage 20、22、24 Done 后补 R1 |
+| 26～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
 
 ### 11.1 Stage 1～5 首轮跨阶段设计审计
 
@@ -606,6 +615,90 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 
 审计结论：Stage 9A～16 的 R2～R10 设计材料通过全范围一致性审计。所有 Stage 仍须在其实际前置 Done 后逐项补 R1；Stage 16 的 default new 还须完成 Gate B 实际证据。该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 17。
 
+### 11.8 Stage 17 独立设计审计
+
+审计日期：2026-07-11。审计范围为 Stage 17 分册及其与 Stage 1、2、3、4、10A、10B、15、16、02/03/04 的缓存、来源、错误和降级契约；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate C、设计冻结或任一 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与顺序 | 通过 | Stage 17 必须等待 Stage 1 ADR/Provider 结论和 Stage 16 正式 `degraded` schema；Stage 3/4 结构化 AmapService、10A/10B 请求内去重、15 error envelope 均为被消费契约 |
+| 缓存边界 | 通过 | 仅缓存已通过领域模型校验的 POI/geocode/weather/route 事实；不缓存 raw payload、LLM 输出、TripPlan、自由文本、Prompt、Key、错误 envelope 或二进制 |
+| key 与 Provider 语义 | 通过 | key 包含 operation、标准化参数、Provider、schema/capability version、GCJ-02 与策略；Provider 切换不触发 degraded，也不得误复用不兼容条目 |
+| fresh/stale 分流 | 通过 | fresh 命中跳过 Provider；实时成功写 live；只有实时技术失败才尝试可信 stale；无 stale/坏 stale 保持 Stage 15 技术错误，不构造 partial/failed |
+| degraded 传播 | 通过 | `cached_stale` 是本 Stage 唯一新增的真实 `degraded=true` 来源；`cached_fresh` 不降级，degraded 不改变 complete/partial/failed、accepted constraints、路线真实性或修复规则 |
+| 配置与回滚 | 通过 | 容量、TTL 和 stale 窗口由 Stage 1 ADR 定稿并接入 Settings；内存缓存无持久化迁移，回滚按 degraded 汇总→AmapService 包装→cache/key 模块逆序 |
+| 测试与证据 | 通过 | 分册定义 14 个自动化用例、4 个人工场景、缓存键/freshness/调用次数/回滚证据；默认测试离线且使用 FakeAmapProvider 与注入时钟 |
+
+审计结论：Stage 17 的 R2～R10 设计材料通过独立一致性复核。R1 仍必须等待 Stage 1 和 Stage 16 实际 Done，并在开工前复核 Stage 1 ADR 是否已给出 TTL、容量和 stale 窗口的真实证据。该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 18。
+
+### 11.9 Stage 18～20 跨 Stage 一致性审计
+
+审计日期：2026-07-11。审计范围为 Stage 18、19、20 分册及其与 Stage 4、7A、7B、8、10A/10B、13D、14、15、16、17、02/03/04 的天气、地图、Key、来源、错误和 Gate C 契约；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate C、设计冻结或任一 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与批次边界 | 通过 | Stage 18 消费 Stage 4 天气、7A/7B/8 预留和 13D 重建；Stage 19 先于 Stage 20 收口 Web JS Key；Stage 20 消费 10B RouteSegment、14 timeline focus、16 正式 TripPlan 和 17 freshness |
+| 天气真实性与决策边界 | 通过 | 天气只使用结构化预报范围内数据；超范围/缺失为 unavailable；室内外标签区分 sourced/estimated/unknown，unknown 不被硬判；Agent 只能替换已有候选 ID |
+| 下游重建边界 | 通过 | 天气导致主要点位集合、日期或顺序变化后，必须从 PrimaryDraft 起重建 9A～13D 全部下游；不得复用旧住宿、便餐、路线、时间轴、预算或校验结果 |
+| 错误与 degraded 分流 | 通过 | 天气技术错误无可信输入时走 Stage 15 error envelope；合法 unavailable 不阻断规划；cached_stale 天气/路线只触发 degraded，不改变 complete/partial/failed 或 accepted 约束 |
+| Key 安全与配置 | 通过 | Stage 19 区分后端 `AMAP_API_KEY` 与前端 `VITE_AMAP_WEB_JS_KEY`，要求 localhost/127.0.0.1 来源限制、配额、最小权限、构建扫描和脱敏证据；Stage 20 只消费配置状态 |
+| 地图真实性与联动 | 通过 | Stage 20 只绘制 RouteService 的真实 GCJ-02 polyline；缺失 polyline 显示 unavailable，禁止端点直线；地图与时间轴通过 `day_id + segment_id` 双向联动，不改写 TripPlan |
+| 导出技术记录 | 通过 | Stage 20 只验证 html2canvas 捕获能力并输出 Stage 25 输入；捕获失败时使用基于真实 polyline 的 SVG 快照，禁止空白或直线占位冒充成功 |
+| 测试、证据与回滚 | 通过 | 三个分册均列出文件范围、输入输出契约、配置/开关、不做事项、自动化/人工验收、量化指标、证据和逆序回滚；默认不引入新前端测试框架作为硬依赖 |
+
+审计结论：Stage 18～20 的 R2～R10 设计材料通过跨 Stage 一致性复核。R1 仍必须等待各自前置 Stage 实际 Done 后逐项补证；Gate C 仍须实施期真实测试、Key 控制台证据、地图人工验收和 Stage 16 默认 new 实际证据。该结论不表示 Ready、Done、Gate C 通过、设计冻结或允许修改工程代码。下一步细化 Stage 21。
+
+### 11.10 Stage 21 独立一致性审计
+
+审计日期：2026-07-11。审计范围为 Stage 21 分册及其与 Stage 19、23、25、26、27、28、02/03/04 的本地代理、请求客户端、地图 Key、图片、PDF 和 SSE 接口边界；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate D、设计冻结或 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与阻断边界 | 通过 | Stage 21 依赖 Stage 19，只统一请求入口和本地代理；未通过时阻断 Stage 23、25、27、28 的前端请求接入 |
+| 本地代理范围 | 通过 | 浏览器业务 API 使用相对 `/api`，Vite proxy target 仅限本地开发配置；不设计生产 base URL 或扩大 CORS |
+| 硬编码 host 清除 | 通过 | `services/api.ts` 和 Result 图片请求纳入扫描与迁移范围，允许 `vite.config.ts` 保留本地 proxy target |
+| 请求类型隔离 | 通过 | JSON client 正式落地，stream、multipart、download 只预留职责边界；避免 JSON header/axios 拦截器污染后续 SSE、PDF 或 Blob |
+| 后续 Stage 衔接 | 通过 | Stage 23 图片批量、Stage 25/27 PDF、Stage 28 SSE 都只消费请求边界；Stage 21 不提前新增业务接口 |
+| Key 与安全 | 通过 | 沿用 Stage 19 的 `VITE_AMAP_WEB_JS_KEY`，地图 Web JS 不经 `/api` 代理；日志和证据不记录 Key、payload、Blob 或堆栈 |
+| 测试、证据与回滚 | 通过 | 覆盖源码/构建扫描、前端 build、dev 代理冒烟、图片路径、地图 Key 回归和回滚证据 |
+| 回滚边界 | 通过 | 回滚顺序先恢复调用方再恢复请求模块；禁止回滚为组件内新增硬编码 host |
+
+审计结论：Stage 21 的 R2～R10 设计材料通过独立一致性复核。R1 仍必须等待 Stage 19 实际 Done 后补证；Gate D 仍须后续 Stage 22～30 实施期测试、PDF/图片/SSE/PC 显示真实证据和整体体验闭环。该结论不表示 Ready、Done、Gate D 通过、设计冻结或允许修改工程代码。下一步细化 Stage 22～24。
+
+### 11.11 Stage 22～24 跨 Stage 一致性审计
+
+审计日期：2026-07-11。审计范围为 Stage 22、23、24 分册及其与 Stage 13A、14、21、25、02/03/04 的天级展开、图片批量请求、图片加载终态、导出准备和 Gate D 契约；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate D、设计冻结或任一 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与批次边界 | 通过 | Stage 22 消费 Stage 14 的 day/time 引用；Stage 23 消费 Stage 21 请求入口和 Stage 13A API 基线；Stage 24 依赖 Stage 22 全部展开与 Stage 23 批量结果 |
+| Stage 25 输入完整性 | 通过 | Stage 22 提供 expandAll/snapshot/restore；Stage 24 提供 `imagesReady`/`waitForImagesReady()`，共同满足 Stage 25 自动全展开并等待图片终态的前置输入 |
+| 展开状态一致性 | 通过 | Stage 22 明确使用稳定 day key，默认全部折叠，支持全部展开/折叠，TripPlan 替换清理旧状态；不修改 TripPlan、时间轴、地图或后端 |
+| 图片批量契约 | 通过 | Stage 23 定义 `/api/poi/photos/batch`、client_ref 映射、前后端双重去重、单批上限、单项状态和部分成功；不提前实现懒加载或导出等待 |
+| 图片终态与等待 | 通过 | Stage 24 将 loaded/fallback 作为终态，failed 不可无限 pending；慢网、404、超时、重试耗尽都进入 fallback，并提供 ready summary |
+| 错误、降级与真实性 | 通过 | 图片 not_found/failed 不写回 TripPlan 事实字段；fallback 只代表 UI 可显示/可导出终态，不冒充真实图片来源成功 |
+| 配置、安全与日志 | 通过 | 三个 Stage 不新增用户功能开关；新增常量/env 需登记；证据和日志禁止真实 Key、完整 TripPlan、自由文本和完整图片 URL 列表 |
+| 测试、证据与回滚 | 通过 | 覆盖 1～3 天展开、请求数收敛、单项失败、缓存、慢网、404、超时、ready、构建、人工验收和逆序回滚 |
+
+审计结论：Stage 22～24 的 R2～R10 设计材料通过跨 Stage 一致性复核。R1 仍必须等待各自前置 Stage 实际 Done 后逐项补证；Gate D 仍须 Stage 25～30 细化、实施期真实测试、PDF/历史/SSE/PC 显示证据和整体体验闭环。该结论不表示 Ready、Done、Gate D 通过、设计冻结或允许修改工程代码。下一步细化 Stage 25。
+
+### 11.12 Stage 25 独立一致性审计
+
+审计日期：2026-07-11。审计范围为 Stage 25 分册及其与 Stage 20、22、24、27、02/03/04 的地图导出、自动全展开、图片 ready、PDF Blob、分页、下载和 Gate D 契约；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate D、设计冻结或 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与阻断边界 | 通过 | Stage 25 依赖 Stage 20 地图导出记录、Stage 22 展开状态接口和 Stage 24 图片 ready；未通过时阻断 Stage 26/27 |
+| 自动全展开与恢复 | 通过 | 导出流程先 snapshot，再在独立导出上下文 expandAll，成功或失败都 cleanup 并 restore 原展开状态 |
+| 图片和字体等待 | 通过 | Stage 25 消费 Stage 24 `waitForImagesReady()`，只在 loaded/fallback 后截图；不另建图片状态机 |
+| 地图真实性 | 通过 | 优先使用 Stage 20 捕获记录；捕获不稳定时使用真实 RouteSegment polyline SVG 快照；禁止空白地图、端点直线或重新请求路线冒充成功 |
+| PDF Blob 边界 | 通过 | 成功导出只生成一个正式 Blob，浏览器下载和 Stage 27 上传必须复用同一 Blob；本 Stage 不接后端保存 |
+| 分页与内容完整性 | 通过 | 规定卡片感知 A4 分页，保护标题、天 header、时间轴事件、点位卡片、图片、餐饮和地图，不以整张长图平移作为成功标准 |
+| 错误与降级 | 通过 | 任一步失败都不得静默导出缺关键内容的成功 PDF；失败必须清理导出容器、恢复状态并给稳定错误 |
+| 测试、证据与回滚 | 通过 | 覆盖三种展开状态、1～3 天、图片/地图失败、分页、单 Blob、异常恢复、构建扫描和逆序回滚证据 |
+
+审计结论：Stage 25 的 R2～R10 设计材料通过独立一致性复核。R1 仍必须等待 Stage 20、22、24 实际 Done 后补证；Gate D 仍须 Stage 26～30 细化、实施期真实测试、PDF 历史/SSE/PC 显示证据和整体体验闭环。该结论不表示 Ready、Done、Gate D 通过、设计冻结或允许修改工程代码。下一步细化 Stage 26～27。
+
 ---
 
 ## 十二、后续填充顺序
@@ -619,4 +712,4 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 5. 细化 Stage 31A～33，覆盖无状态修订、对话前端和配置收口；
 6. 执行 02→03→04→代码的全盘一致性审计。
 
-当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化并通过第二次跨 Stage 设计审计，Stage 9A～16 已完成细化并通过全范围一致性审计；下一步从 Stage 17 开始逐个新增分册，不再向总纲堆叠完整工作包。
+当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化并通过第二次跨 Stage 设计审计，Stage 9A～16 已完成细化并通过全范围一致性审计，Stage 17 已完成独立设计审计，Stage 18～20 已完成细化并通过跨 Stage 一致性审计，Stage 21 已完成细化并通过独立一致性审计，Stage 22～24 已完成细化并通过跨 Stage 一致性审计，Stage 25 已完成细化并通过独立一致性审计；下一步细化 Stage 26～27，不再向总纲堆叠完整工作包。
