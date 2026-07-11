@@ -4,7 +4,7 @@
 >
 > 维护规则：每次开始、暂停、完成或调整执行顺序时更新；设计与业务内容仍回写 02～04，本文只保留状态摘要和链接。
 >
-> 最后更新：2026-07-09
+> 最后更新：2026-07-10
 
 ---
 
@@ -13,13 +13,13 @@
 | 项目 | 当前值 |
 |------|--------|
 | 所处阶段 | 代码实施规格设计 |
-| 当前节点 | Stage 1～5 已完成首轮跨 Stage 审计；Stage 6～8 已完成第二次跨 Stage 审计；Stage 9A、9B 已细化，待后续 Stage 9A～16 跨 Stage 审计 |
+| 当前节点 | Stage 1～5、6～8、9A～16 均已完成相应 R2～R10 设计审计；Stage 16 的默认 new 切换仍待实施期 Gate B 实际证据 |
 | 当前状态 | 暂停 |
-| 下一目标 | 细化 Stage 10A：RouteService 固定交通基础版工作包 |
+| 下一目标 | 细化 Stage 17：进程内请求缓存与外部数据降级工作包 |
 | 当前代码实施 | 尚未开始本轮优化代码改造 |
 | 当前阻塞 | 无 |
 
-恢复工作时，从 `03_implement_plan.md` 的 Stage 10A 定义开始，新增并细化 `stages/stage_10a.md`。Stage 9A 已完成连续住宿、早餐安排和便餐候选/筛选规格；Stage 9B 已完成完整 `ItineraryDraft` 规格；二者已回写到 `04_stage_implementation_spec.md` 索引和覆盖矩阵，但尚未做 Stage 9A～16 跨 Stage 审计。Stage 10A 重点承接 Stage 9B 的完整活动顺序，定义 RouteService 固定交通基础版：按相邻活动真实坐标计算路线、处理偏好交通方式回退、步行 2km 上限、必要路线缺失和后续时间轴输入边界。
+恢复工作时，从 `03_implement_plan.md` 的 Stage 17 定义和 `04_stage_implementation_spec.md` 的当前索引开始，新增并细化 `stages/stage_17.md`。Stage 9A～16 已完成全范围 R2～R10 一致性审计：连续住宿/真实便餐、完整草案、真实路线、时间轴、预算、校验、有限修复、complete/partial/failed、Pinia/只读展示、错误分流和默认新链路切换条件均已闭合。审计已修正两处衔接：Stage 15 使用独立技术错误组件，不依赖 Stage 14；Stage 16 的 `failed` 不携带 `days`，与 Stage 13D 一致。当前仍是纯设计阶段，未实施任何本轮工程代码；Stage 17 负责单进程有界 TTL 缓存及可信 stale 降级，不得改变既有业务/状态边界。
 
 ### 1.1 工程修改硬约束
 
@@ -39,7 +39,7 @@
 |------|------|----------|----------|
 | [`02_opt_plan.md`](02_opt_plan.md) | 优化目标、产品规则与业务约束 | 已冻结 | 原则上不修改；仅在产品目标或业务规则变化时重新评审 |
 | [`03_implement_plan.md`](03_implement_plan.md) | Stage 编排、依赖、范围与 Gate | 已完成，已接入 04 | 仅在 Stage 依赖、范围或 Gate 确有问题时修改 |
-| [`04_stage_implementation_spec.md`](04_stage_implementation_spec.md) + [`stages/`](stages/) | 文件、契约、步骤、测试、指标与回滚 | 总纲完成；Stage 1～5 已完成首轮审计；Stage 6～8 已完成第二次跨 Stage 审计；Stage 9A、9B 已细化 | 下一步细化 Stage 10A |
+| [`04_stage_implementation_spec.md`](04_stage_implementation_spec.md) + [`stages/`](stages/) | 文件、契约、步骤、测试、指标与回滚 | 总纲完成；Stage 1～5、6～8、9A～16 均已完成相应设计审计 | 下一步细化 Stage 17 |
 | `99_todo.md` | 执行状态与 Todo 看板 | 使用中 | 仅按用户明确指令更新 |
 
 ---
@@ -64,13 +64,18 @@
 - [x] 完成 Stage 6～8 第二次跨 Stage 一致性审计和 R2～R10 设计复核。
 - [x] 细化 Stage 9A：连续住宿与便餐候选/筛选工作包。
 - [x] 细化 Stage 9B：完整 ItineraryDraft 工作包。
+- [x] 细化 Stage 10A、10B：固定与混合交通真实路线工作包。
+- [x] 细化 Stage 11、12A、12B：时间轴、预算与确定性校验工作包。
+- [x] 细化 Stage 13A～13E：Coordinator、修复/partial、Pinia 当前行程状态工作包。
+- [x] 细化 Stage 14～16：只读时间轴、分级错误、无虚构 fallback 与新链路切换工作包。
+- [x] 完成 Stage 9A～16 全范围跨 Stage 一致性审计和 R2～R10 设计复核；记录两处已修正的规格衔接。
 - [x] 明确设计冻结与执行 Ready 的区别：设计期复核 R2～R10，R1 实施时逐 Stage 解锁。
 
 ---
 
 ## 四、下一步 Todo
 
-### 4.1 当前批次：Stage 6～16 核心规划链路
+### 4.1 已完成批次：Stage 1～16 核心规划链路
 
 - [x] 细化 Stage 1：高德 MCP 与官方 HTTP Provider 技术验证。
 - [x] 细化 Stage 2：核心领域契约。
@@ -86,18 +91,19 @@
 - [x] 执行 Stage 6～8 第二次跨 Stage 一致性审计和 R2～R10 设计复核；审计通过前不开始 Stage 9A。
 - [x] 细化 Stage 9A：连续住宿与便餐候选/筛选。
 - [x] 细化 Stage 9B：完整 ItineraryDraft。
-- [ ] 细化 Stage 10A～16，完成路线、时间、预算、修复闭环及默认链路切换规格。
-- [ ] 在后续合适批次节点继续对 Stage 9A～16 做跨 Stage 一致性审计和 R2～R10 设计复核。
+- [x] 细化 Stage 10A～16，完成路线、时间、预算、修复闭环及默认链路切换规格。
+- [x] 完成 Stage 9A～16 跨 Stage 一致性审计和 R2～R10 设计复核。
 
 ### 4.2 后续批次
 
-- [ ] 细化 Stage 17～30，完成缓存、地图、PDF、SSE 与体验增强规格。
+- [ ] 细化 Stage 17：进程内请求缓存与外部数据降级规格。（下一项）
+- [ ] 细化 Stage 18～30，完成天气、地图、PDF、SSE 与体验增强规格。
 - [ ] 细化 Stage 31A～33，完成无状态修订、对话前端和配置收口规格。
 - [ ] 执行 02→03→04→代码的全盘一致性审计。
 - [ ] 全部必要 Stage 完成 R2～R10 设计复核后，完成设计文档冻结评审并等待用户明确确认。
 - [ ] 仅在用户明确确认设计冻结并下达代码实施指令后，按 03 顺序开始代码实施。
 
-后续批次仅作路线提示；当前执行焦点始终以 4.1 中最靠前的未完成事项为准。
+当前执行焦点始终以 4.2 中最靠前的未完成事项为准，即 Stage 17。
 
 ---
 

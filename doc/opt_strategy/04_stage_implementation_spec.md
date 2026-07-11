@@ -244,17 +244,17 @@
 | P0-3 多偏好完整检索 | 5、6 | B | Stage 5、6 已细化 | `evidence/stage_5/`、`evidence/stage_6/` |
 | P0-4 结构化草案输出 | 2、5、7B、8、9B | B | Stage 2、5、7B、8、9B 已细化 | `evidence/stage_2/`、`evidence/stage_5/`、`evidence/stage_7b/`、`evidence/stage_8/`、`evidence/stage_9b/` |
 | P0-5 餐饮候选检索与筛选 | 7A、7B、9A、9B | B | Stage 7A、7B、9A、9B 已细化 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_9a/`、`evidence/stage_9b/` |
-| P0-6 RouteService 基础版 | 10A、10B | B | 待补齐 | 对应 Stage 目录 |
-| P0-7 行程深度关联化 | 7A～13D | B | Stage 7A、7B、8、9A、9B 已细化；其余待补齐 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_8/`、`evidence/stage_9a/`、`evidence/stage_9b/` 及对应 Stage 目录 |
-| P0-8 可执行时间轴信息 | 11、14 | B | 待补齐 | `evidence/stage_11/`、`evidence/stage_14/` |
+| P0-6 RouteService 基础版 | 10A、10B | B | Stage 10A、10B 已细化 | `evidence/stage_10a/`、`evidence/stage_10b/` |
+| P0-7 行程深度关联化 | 7A～13D | B | Stage 7A、7B、8、9A、9B、11、12A、12B、13A～13D 已细化 | `evidence/stage_7a/`、`evidence/stage_7b/`、`evidence/stage_8/`、`evidence/stage_9a/`、`evidence/stage_9b/`、`evidence/stage_11/`、`evidence/stage_12a/`、`evidence/stage_12b/`、`evidence/stage_13a/`、`evidence/stage_13b/`、`evidence/stage_13c/`、`evidence/stage_13d/` |
+| P0-8 可执行时间轴信息 | 11、14 | B | Stage 11、14 已细化 | `evidence/stage_11/`、`evidence/stage_14/` |
 | P0-9 对话式行程迭代 | 31A～32 | E | 待补齐 | 对应 Stage 目录 |
-| P1-1 分级 Fallback 与结果状态 | 16 | C | 待补齐 | `evidence/stage_16/` |
-| P1-2 分级错误处理 | 15 | C | 待补齐 | `evidence/stage_15/` |
+| P1-1 分级 Fallback 与结果状态 | 16 | C | Stage 16 已细化 | `evidence/stage_16/` |
+| P1-2 分级错误处理 | 15 | C | Stage 15 已细化 | `evidence/stage_15/` |
 | P1-3 请求缓存与外部数据降级 | 17 | C | 待补齐 | `evidence/stage_17/` |
 | P1-4 地图信息增强 | 20 | C | 待补齐 | `evidence/stage_20/` |
 | P1-5 天气驱动决策 | 18 | C | 待补齐 | `evidence/stage_18/` |
 | P1-6 地图 Key 风险治理 | 19 | C | 待补齐 | `evidence/stage_19/` |
-| P2-1 当前行程导航与 PDF 历史 | 13E、26、27 | D | 待补齐 | 对应 Stage 目录 |
+| P2-1 当前行程导航与 PDF 历史 | 13E、26、27 | D | Stage 13E 已细化；26、27 待补齐 | `evidence/stage_13e/`、`evidence/stage_26/`、`evidence/stage_27/` |
 | P2-2 SSE 流式进度 | 28 | D | 待补齐 | `evidence/stage_28/` |
 | P2-3 导出代码重构 | 25 | D | 待补齐 | `evidence/stage_25/` |
 | P2-4 图片批量接口 | 23 | D | 待补齐 | `evidence/stage_23/` |
@@ -401,6 +401,7 @@ doc/opt_strategy/evidence/
 | `TRIP_CACHE_TTL_POI_SECONDS` | 正整数 | 17 | 非法值启动失败 |
 | `TRIP_CACHE_TTL_WEATHER_SECONDS` | 正整数 | 17 | 非法值启动失败 |
 | `TRIP_CACHE_TTL_ROUTE_SECONDS` | 正整数 | 17 | 非法值启动失败 |
+| `TRIP_TAXI_PRICING_RULES_PATH` | 项目内规则文件路径，非敏感 | 12A | 文件缺失/当前城市无规则时相关估算 unavailable；JSON/schema 非法返回稳定配置错误 |
 | `TRIP_REPORT_DIR` | 持久化目录 | 26 | 报告能力不可用并返回明确配置错误，不使用系统临时目录替代 |
 | `TRIP_REPORT_MAX_UPLOAD_MB` | 正数 | 26 | 非法值启动失败 |
 | `PLAN_TOKEN_SECRET` | secret | 31A | 修订能力不可启用，禁止使用硬编码默认 secret |
@@ -489,9 +490,8 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 | 7A | [主要点位候选池](stages/stage_07a.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5、6 Done 后补 R1 |
 | 7B | [DestinationResearchAgent 主要点位筛选](stages/stage_07b.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 5、7A Done 后补 R1 |
 | 8 | [PrimaryItineraryDraft](stages/stage_08.md) | 已细化，R2～R10 设计复核通过 | 待 Stage 2、5、7B Done 后补 R1 |
-| 9A | [连续住宿与便餐候选/筛选](stages/stage_09a.md) | 已细化，待 Stage 9A～16 跨 Stage 审计 | 待 Stage 8 Done 后补 R1 |
-| 9B | [完整 ItineraryDraft](stages/stage_09b.md) | 已细化，待 Stage 9A～16 跨 Stage 审计 | 待 Stage 9A Done 后补 R1 |
-| 10A～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
+| 9A～16 | 对应 Stage 分册 | 已细化，R2～R10 全范围一致性审计通过 | 各 Stage 仍须待实际前置 Done 后补 R1；16 另待 Gate B 实际证据 |
+| 17～33 | 按 03 顺序逐批建立对应分册 | 待补齐 | Not Ready |
 
 ### 11.1 Stage 1～5 首轮跨阶段设计审计
 
@@ -527,6 +527,85 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 
 审计结论：Stage 6、7A、7B、8 的 R2～R10 设计材料通过第二次跨 Stage 一致性复核。R1 均保持“执行 Ready 待前置 Stage 实际 Done 后补证”；当前结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步可开始细化 Stage 9A 分册。
 
+### 11.3 第一批 Stage 11→12A→12B→13A 交接审计
+
+审计日期：2026-07-10。审计范围为 Stage 11、12A、12B、13A 分册及其与 Stage 9B/10A/10B、02/03/04 的接口；这是用户批准的临时批处理细化，不改变 `99_todo.md` 的常规“单工作包”规则，也不代表代码、测试、Gate 或设计冻结已完成。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 依赖与顺序 | 通过 | 10B 的 RouteSegment/查询参考进入 11；11 timeline 进入 12A budget，再与预算共同进入 12B；仅 12B valid 才由 13A assemble complete |
+| 时间轴边界 | 通过 | 11 只前向排程、报告超窗和一次 transit refresh 请求；不改草案/路线/餐厅/酒店，也不决定 partial/failed |
+| 预算真实性 | 通过 | 12A 只使用来源价格或本地明确规则；规则金额为 estimated，缺价/缺规则为 unavailable，known total 不含 unavailable |
+| 校验与修复分流 | 通过 | 12B 将来源、路线、时间、三餐、住宿、accepted constraints 与预算输入映射为稳定 issue/scope；不自行修复；13A invalid 固定为 requires_repair |
+| 组装与状态 | 通过 | 13A 只从 valid 输入回填来源事实并生成 complete；partial/failed、修复、HTTP 错误和默认切换分别留给 13B～16 |
+| API/迁移边界 | 通过 | legacy/shadow 普通请求零新链路；new 仍 503；13A 只允许本地显式验证，线程池不改变默认响应 schema |
+| 配置与测试 | 通过 | 12A 新增 `TRIP_TAXI_PRICING_RULES_PATH` 登记；四个分册均具备精确文件表、离线定向/全量/构建命令、证据和逆序回滚 |
+
+审计结论：第一批 Stage 11、12A、12B、13A 的 R2～R10 设计材料通过交接一致性复核。R1 仍必须等待各自前置 Stage 实际 Done 后补证；该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 13B。
+
+### 11.4 第二批 Stage 13B→13C→13D 交接审计
+
+审计日期：2026-07-10。审计范围为 Stage 13B、13C、13D 分册及其与 9A～13A、02/03/04 的 repair、状态和重建接口；这是用户批准的临时批处理细化，不改变 `99_todo.md` 的常规“单工作包”规则，也不代表代码、测试、Gate 或设计冻结已完成。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 修复优先级 | 通过 | 13B 只按 route→meal→lodging 替换真实同级事实；未闭合才交 13C，避免局部修复越界改 PrimaryDraft |
+| 重排/删除边界 | 通过 | 13C 仅对 explicit-time 进入受限重排；普通超窗最后按最小 optional removal_rank 删除一个点，并从 PrimaryDraft 全量重建 9A～12B |
+| 不可变量 | 通过 | accepted constraints、required、来源事实、PrimaryCandidateSelection 与交通偏好贯穿 13B～13D；酒店/三餐/必打卡不得删除 |
+| RepairContext | 通过 | 8 次全局、3 次同类、已试 ID 与 canonical fingerprint 在三 Stage 间连续继承；重复状态、无候选或上限只形成业务停止，不伪装技术成功 |
+| 全局与前缀收口 | 通过 | 13D 先在完整 N 日范围跨日重排；仅失败后 K=N-1…1 逐级重建连续前缀，禁止裁剪旧数组/跳日；DayK 仍按非末日、K+1 lodging/预算重算 |
+| 结果分流 | 通过 | 技术错误原样传播；accepted/food 硬约束不可行直接 failed；complete/partial 只由 Validator.valid 输入组装，degraded 仍不由本批擅自置位 |
+| API/迁移与测试 | 通过 | 默认流量仍 legacy/shadow，new 仍 reserved；三分册均有精确文件、离线定向/全量/构建命令、证据和逆序回滚 |
+
+审计结论：第二批 Stage 13B、13C、13D 的 R2～R10 设计材料通过交接一致性复核。R1 仍必须等待各自前置 Stage 实际 Done 后补证；该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 13E。
+
+### 11.5 Stage 13E 独立交接审计
+
+审计日期：2026-07-10。审计范围为 Stage 13E 分册及其与 Stage 2、13A、现有 Vue 页面、Stage 14～16、27、32 的前端状态接口；本次为一个独立工作包的 R2～R10 设计复核，不替代 `99_todo.md` 要求的 Stage 9A～16 全范围一致性审计，也不代表代码、测试、Gate 或设计冻结已完成。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 唯一状态责任 | 通过 | Pinia `useCurrentTripStore` 是唯一正式当前 `TripPlan` 入口；Result 不再在 mounted 时持有/恢复正式副本，组件临时地图、图片、折叠和 edit draft 不构成正式事实 |
+| API/schema 迁移边界 | 通过 | 13E 继续承载当前 legacy 前端 `TripPlan`，不提前消费 new/shadow 结果或建设双 schema；Stage 16 才同步替换类型、响应解码与 snapshot version |
+| 原子性与迟到结果 | 通过 | 单调 request sequence 覆盖 begin/replace/fail/clear；过期或清空后的 success/error 都不能覆盖较新/已清空行程，替换只接受完整 guard 通过的 plan |
+| 恢复与存储边界 | 通过 | 仅 versioned sessionStorage snapshot 保存 ready 完整 plan；loading/error/token/draft/raw 数据不保存，旧 key 仅一次性确定性迁移，坏值只清理本 Store key |
+| 后续 Stage 接管 | 通过 | 14 负责删除编辑并只读展示，15/16 负责错误/API 状态，27 负责导航，32 扩展 revision 原子替换；13E 不提前实现它们 |
+| 验证与回滚 | 通过 | 无新增前端测试框架，采用 typecheck+build 和四个记录化人工状态场景；回滚先逆序下游，且仅在可验证时降写旧 snapshot，禁止全量清 storage 或虚构转换 |
+
+审计结论：Stage 13E 的 R2～R10 设计材料通过独立交接一致性复核。R1 仍必须等待 Stage 13A 实际 Done 后补证；该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 14。
+
+### 11.6 第三批 Stage 14→15→16 交接审计
+
+审计日期：2026-07-10。审计范围为 Stage 14、15、16 分册及其与 Stage 13D、13E、02/03/04 的结果状态、前端状态、错误/真实性和 mode 接口；这是用户批准的临时批处理细化，不改变 `99_todo.md` 的常规“单工作包”规则，也不替代 Stage 9A～16 全范围一致性审计。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 状态消费顺序 | 通过 | 13D 先定义可信 complete/partial/failed，14 只读呈现其时间轴、K+1 lodging 与 missing；15 不改业务判定，16 才将正式状态切入默认 API |
+| 前端事实边界 | 通过 | 14 删除全部手动编辑与事实字段 mutation；13E Store 原子替换，16 同提交升级为 v2 正式 schema；地图/PDF/对话仍留后续 Stage |
+| 业务与技术分流 | 通过 | 15 让业务不可行保留 HTTP 200 TripPlan，配置/超时/Provider/核心输出走稳定 error envelope；parse_failed 是 ignored 例外，fake stale 仅验证边界不抢占 17 |
+| 真实性与 fallback | 通过 | 16 删除北京默认坐标、平移、直线、虚构实体/费用和 LLM 补事实；accepted/首日不可行均 failed，legacy 回滚同样禁止恢复虚构分支 |
+| API/mode 迁移 | 通过 | 16 在 Gate B 证据齐备后默认 new，API 直出正式 TripPlan；legacy 是短期受控回滚，shadow 普通流量零双跑，前端不建设长期 adapter |
+| 测试与回滚 | 通过 | 三分册均有精确文件、离线定向/全量/build 命令、PC/API 人工验收和依赖逆序回滚；new→legacy→new 演练不允许丢失状态或恢复虚构 fallback |
+
+审计结论：第三批 Stage 14、15、16 的 R2～R10 设计材料通过交接一致性复核。R1 仍必须等待各自前置 Stage 实际 Done；Stage 16 的 default new 还必须等待 Gate B 实际证据。该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步执行 Stage 9A～16 全范围一致性审计。
+
+### 11.7 Stage 9A～16 全范围一致性审计
+
+审计日期：2026-07-10。审计范围为 Stage 9A、9B、10A、10B、11、12A、12B、13A～13E、14、15、16 全部分册及 02/03/04 的契约；本次只验证 R2～R10 设计一致性，不代表代码、测试、Gate 或任一 R1 已通过。
+
+| 审计维度 | 结论 | 关键收口 |
+|---|---|---|
+| 草案到活动事实链 | 通过 | 9A 将 PrimaryDraft 的 ID/meal slot/anchor 收口为连续 lodging、早餐与真实便餐；9B 只合并白名单 ID 为完整活动顺序，10A/10B 才基于回填坐标查询必要真实路线 |
+| 时间、预算与校验闭环 | 通过 | 11 只计算 timeline/buffer 并最多一次公交刷新；12A 仅生成 known total/assumptions/unavailable，12B 统一报告稳定 issue；三者均不擅自修复或组装结果 |
+| 修复、partial 与约束 | 通过 | 13B route→meal→lodging 局部替换，13C 重排/删 optional，13D 全局重排后递减前缀；accepted/required/food 不可放宽，partial 是连续完整前缀且 DayK/K+1 lodging/预算一致 |
+| 业务、技术与降级分流 | 通过 | 合法空/最终不可行才为 partial/failed；Provider/LLM/schema/config 为 Stage 15 error envelope；parse_failed 是 ignored 例外；stale 只在可信输入时 `degraded=true`，真实缓存仍留 17 |
+| 前端与 schema 切换 | 通过 | 13E 是唯一当前行程状态；14 只读时间轴/预算/status 并删除手动编辑；16 同步切换正式 TripPlan、snapshot v2 与 new 默认，failed 不携带 `days`，不建设长期 adapter |
+| mode、真实性与回滚 | 通过 | 16 清除默认北京坐标、平移、直线、虚构实体/费用和 LLM 补事实；Gate B 证据前不得 default new；legacy 回滚与 shadow 均不得恢复虚构 fallback 或普通流量双跑 |
+
+审计中发现并已修正两处规格衔接：Stage 15 改用独立技术错误组件，不依赖其未声明的 Stage 14 状态横幅；Stage 16 的 failed 结果改为不携带 `days`，与 Stage 13D 的失败 shape 一致。
+
+审计结论：Stage 9A～16 的 R2～R10 设计材料通过全范围一致性审计。所有 Stage 仍须在其实际前置 Done 后逐项补 R1；Stage 16 的 default new 还须完成 Gate B 实际证据。该结论不表示 Ready、Done、设计冻结或允许修改工程代码。下一步细化 Stage 17。
+
 ---
 
 ## 十二、后续填充顺序
@@ -540,4 +619,4 @@ Stage 完整工作包拆分到 `stages/`，与本文共同构成 04 权威实施
 5. 细化 Stage 31A～33，覆盖无状态修订、对话前端和配置收口；
 6. 执行 02→03→04→代码的全盘一致性审计。
 
-当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化并通过第二次跨 Stage 设计审计，Stage 9A、9B 已完成细化；下一步从 Stage 10A 开始逐个新增分册，不再向总纲堆叠完整工作包。
+当前总纲、统一判定规则和 Stage 1～5 分册已完成首轮跨 Stage 设计审计，Stage 6、7A、7B、8 已完成细化并通过第二次跨 Stage 设计审计，Stage 9A～16 已完成细化并通过全范围一致性审计；下一步从 Stage 17 开始逐个新增分册，不再向总纲堆叠完整工作包。
